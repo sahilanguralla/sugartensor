@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 import sugartensor as tf
 
-__author__ = 'namju.kim@kakaobrain.com'
+__author__ = 'namju.kim@kakaocorp.com'
 
 
 @tf.sg_sugar_func
@@ -223,7 +223,7 @@ def sg_ctc(tensor, opt):
 
     # ctc loss
     out = tf.nn.ctc_loss(opt.target.sg_to_sparse(), tensor, opt.seq_len,
-                         ctc_merge_repeated=opt.merge, time_major=False)
+                         ctc_merge_repeated=opt.merge, ignore_longer_outputs_than_inputs=True, time_major=False)
     out = tf.identity(out, 'ctc')
 
     # add summary

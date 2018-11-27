@@ -1,5 +1,10 @@
 from __future__ import absolute_import
-from tensorflow import *
+
+import tensorflow as tf
+
+for func_name in dir(tf):
+    if not func_name.startswith('_'):
+        globals()[func_name] = tf.__dict__.get(func_name)
 
 from .sg_util import sg_opt
 from .sg_main import *
@@ -15,7 +20,7 @@ from . import sg_initializer
 from ._version import __version__
 
 
-__author__ = 'namju.kim@kakaobrain.com'
+__author__ = 'namju.kim@kakaocorp.com'
 
 
 #

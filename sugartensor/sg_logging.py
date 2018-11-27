@@ -8,7 +8,7 @@ import re
 from tensorflow.python.ops import gen_logging_ops
 
 
-__author__ = 'namju.kim@kakaobrain.com'
+__author__ = 'namju.kim@kakaocorp.com'
 
 
 #
@@ -167,13 +167,13 @@ def _pretty_name(tensor):
 
 def _scalar(name, tensor):
     if not tf.get_variable_scope().reuse and not tf.sg_get_context().reuse:
-        val = gen_logging_ops._scalar_summary(name, tensor)
+        val = gen_logging_ops.scalar_summary(name, tensor)
         tf.add_to_collection(tf.GraphKeys.SUMMARIES, val)
 
 
 def _histogram(name, tensor):
     if not tf.get_variable_scope().reuse and not tf.sg_get_context().reuse:
-        val = gen_logging_ops._histogram_summary(name, tensor)
+        val = gen_logging_ops.histogram_summary(name, tensor)
         tf.add_to_collection(tf.GraphKeys.SUMMARIES, val)
 
 
